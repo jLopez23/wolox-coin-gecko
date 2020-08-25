@@ -1,4 +1,4 @@
-const { create, authenticate} = require('../services/users')
+const { findOneUser, create, accessToken} = require('../services/users')
 
 exports.create = (req, res, next) => {
     create(req.body)
@@ -6,8 +6,8 @@ exports.create = (req, res, next) => {
         .catch(next);
 };
 
-exports.authenticate = (req, res, next) => {
-    authenticate(req.body)
-        .then(response => res.send(response))
+exports.accessToken = (req, res, next) => {
+    findOneUser(req.body.userName)
+        .then(user => res.status(200).send({ accesstoken: accessToken(user) }))
         .catch(next);
 };

@@ -1,6 +1,11 @@
 const { User } = require('../models');
-const { encryption, validatePassword } = require('../helpers/keyEncryption');
+const { encryption } = require('../helpers/keyEncryption');
 const { encodeToken } = require('../helpers/jwt'); 
+
+exports.findOneUser = userName => {
+    return User.findOne({ where: {userName} })
+        .catch(error => error);
+};
 
 exports.create = user => {
     user.password = encryption(user.password)
@@ -11,16 +16,6 @@ exports.create = user => {
         .catch(error => error);
 };
 
-exports.authenticate = user => {
-    const userName= user.userName;
-    const password = user.password;
-    return User.findOne({ where: {userName} })
-        .then(result => {
-            if(validatePassword(password, result.password)){
-                return {status:"success", message: "user found!!!", data:{user: result, token:encodeToken(result)}};
-            } else {
-                return {status:"error", message: "Invalid email/password!!!", data:null};
-            }            
-        })
-        .catch(error => error);
+exports.accessToken = user => {
+    return encodeToken(user);
 };
