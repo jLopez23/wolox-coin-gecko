@@ -7,6 +7,9 @@ const config = {
     },
     coingecko: {
         endpointCoinsMarkets: process.env.ENDPOINT_COIN_MARKETS
+    },
+    token: {
+        expire: '0:00:30' // hours:minutes:seconds
     }
 };
 

@@ -1,3 +1,5 @@
+const { expire } = require('../../config').token;
+const { diffDate } = require('../helpers/moment');
 const { decodeToken } = require('../helpers/jwt');
 const { validationResult } = require('express-validator');
 
@@ -14,9 +16,10 @@ exports.validateToken = async (req, res, next) => {
     }
     
     try {
-        decodeToken(accesstoken);
+        if (diffDate(decodeToken(accesstoken).creationDate) > expire) 
+            return res.status(403).json({ errors: 'El accessToken enviado ya esta vencido' });
     } catch (error) {
-        return res.status(403).json({ errors: 'El token enviado no es valido' });
+        return res.status(403).json({ errors: 'El accessToken enviado no es valido' });
     }
 
     return next();
