@@ -1,6 +1,6 @@
+const { findOneUser } = require('../services/users');
 const { validationResult } = require('express-validator');
 const { validatePassword } = require('../helpers/keyEncryption');
-const { findOneUser } = require('../services/users');
 
 exports.validateUser = async (req, res, next) => {
     const errors = validationResult(req);
@@ -12,7 +12,7 @@ exports.validateUser = async (req, res, next) => {
     }
 
     if (!userName || !password) {
-        return res.status(422).json({ errors: `No se enviaron todos los parametros necesarios (userName-password)` });
+        return res.status(422).json({ errors: 'No se enviaron todos los parametros necesarios (userName-password)' });
       }
 
     if (!user) {

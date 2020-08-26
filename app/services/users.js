@@ -1,6 +1,6 @@
 const { User } = require('../models');
-const { encryption } = require('../helpers/keyEncryption');
 const { encodeToken } = require('../helpers/jwt'); 
+const { encryption } = require('../helpers/keyEncryption');
 
 exports.findOneUser = userName => {
     return User.findOne({ where: {userName} })

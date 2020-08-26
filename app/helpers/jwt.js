@@ -7,7 +7,7 @@ exports.encodeToken = user => {
         lastName: user.lastName,
         userName: user.userName
     }
-    return jwt.encode(payload, key);
+    return jwt.encode(payload, key); // falta la expiración del token
 };
 
 exports.decodeToken = token => jwt.decode(token, key);
