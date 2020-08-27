@@ -9,7 +9,7 @@ const config = {
         endpointCoinsMarkets: process.env.ENDPOINT_COIN_MARKETS
     },
     token: {
-        expire: '12:00:30' // hours:minutes:seconds
+        expire: '0:00:30' // hours:minutes:seconds
     }
 };
 

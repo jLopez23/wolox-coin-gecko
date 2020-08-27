@@ -40,7 +40,8 @@ exports.userCryptocurrency = headers => {
         .then(user => { 
            const params = { 
                vs_currency: user.preferredCurrency,
-               ids: user.UserCryptocurrencies.map(element => element.coinId).join(',')
+               ids: user.UserCryptocurrencies.map(element => element.coinId).join(','),
+               per_page: 25
             };
            return coinsMarkets(params)
                .then(result => formatUserCryptocurrency(result.data))

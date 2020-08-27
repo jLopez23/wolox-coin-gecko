@@ -1,29 +1,33 @@
 const { formatDate } = require('./moment');
+const { coinsPrices  } = require('./axios');
 
 exports.formatCryptocurrency = data => {
     return data.map(element => {
-        let obj = [];
-        obj = {
+        return {
+            Id: element.id,
             Simbolo: element.symbol,
             Precio: element.current_price,
             Nombre: element.name,
             Imagen: element.image,
-            fechaUltimaActualización: formatDate(element.last_updated, 'DD-MM-YYYY, h:mm:ss a')
+            FechaUltimaActualizacion: formatDate(element.last_updated, 'DD-MM-YYYY, h:mm:ss a')
         } 
-        return obj;
     })
 };
 
 exports.formatUserCryptocurrency = data => {
-    return data.map(element => {
-        let obj = [];
-        obj = {
+
+    const promises = data.map(async (element) => {
+        return {
+            Id: element.id,
             Simbolo: element.symbol,
-            Precio: element.current_price,
+            PrecioPesosArgentinos: await coinsPrices({vs_currency: 'ARS', ids: element.id }),
+            PrecioDolares: await coinsPrices({vs_currency: 'USD', ids: element.id }),
+            PecioEuros: await coinsPrices({vs_currency: 'EUR', ids: element.id }),
             Nombre: element.name,
             Imagen: element.image,
-            fechaUltimaActualización: formatDate(element.last_updated, 'DD-MM-YYYY, h:mm:ss a')
-        } 
-        return obj;
-    })
+            FechaUltimaActualizacion: formatDate(element.last_updated, 'DD-MM-YYYY, h:mm:ss a')
+        }
+    });
+
+    return Promise.all(promises);
 };

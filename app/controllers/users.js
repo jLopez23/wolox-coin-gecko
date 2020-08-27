@@ -3,7 +3,7 @@ const { findOneUser, create } = require('../services/users');
 
 exports.create = (req, res, next) => {
     create(req.body)
-        .then(user => res.status(201).send({ user }))
+        .then(user => res.status(201).send(user))
         .catch(next);
 };
 
