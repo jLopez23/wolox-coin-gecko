@@ -1,8 +1,9 @@
 const { create, accessToken } = require('./controllers/users');
 const { validateUser } = require('./middlewares/validateUser');
 const { validateToken } = require('./middlewares/validateToken');
-const { getCryptocurrency } = require('./controllers/cryptocurrency');
 const { validateCreateUser } = require('./middlewares/validateCreateUser');
+const { validateUserCryptocurrency } = require('./middlewares/validateUserCryptocurrency')
+const { getCryptocurrency, createUserCryptocurrency, userCryptocurrency } = require('./controllers/cryptocurrency');
 
 exports.init = app => {
     // route user
@@ -11,4 +12,6 @@ exports.init = app => {
 
     // route cryptocurrency
     app.get('/cryptocurrency', validateToken, getCryptocurrency);
+    app.post('/create-user-cryptocurrency', [validateToken, validateUserCryptocurrency], createUserCryptocurrency);
+    app.get('/user-cryptocurrency', validateToken, userCryptocurrency);
 };

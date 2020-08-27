@@ -1,12 +1,10 @@
 const axios = require('axios');
 const { endpointCoinsMarkets } = require('../../config').coingecko;
 
-exports.coinsMarkets = param => {
+exports.coinsMarkets = params => {
     return axios.get(endpointCoinsMarkets, 
         {
-            params: {
-                vs_currency: param
-            }
+            params
         }
     )
         .catch(error => error);

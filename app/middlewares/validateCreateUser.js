@@ -12,7 +12,7 @@ exports.validateCreateUser = async (req, res, next) => {
 
     if (!firstName || !lastName || !userName || !password || !preferredCurrency) {
         return res.status(422).json({ errors: 'No se enviaron todos los parametros necesarios (firstName-lastName-userName-password-preferredCurrency)' });
-      }
+    }
 
     if (user) {
         return res.status(404).json({ errors: `El userName '${userName}' ya se encuentra registrado en nuestro sistema` });
