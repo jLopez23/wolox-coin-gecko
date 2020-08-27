@@ -10,6 +10,15 @@ const config = {
     },
     token: {
         expire: '0:00:30' // hours:minutes:seconds
+    },
+    test: {
+        user: { // must exist in database
+            userName: 'julian.lopez',
+            password: '12345678'
+        },
+        coinId: { // must exist in coingecko
+            cryptoCurrencyId: 'tether'
+        }
     }
 };
 

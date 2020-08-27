@@ -22,3 +22,5 @@ routes.init(app);
 const server = app.listen(port, () => {
   console.log(`REST API running on http://localhost:${server.address().port}`);
 });
+
+module.exports = app;

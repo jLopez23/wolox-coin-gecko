@@ -14,6 +14,6 @@ exports.createUserCryptocurrency = (req, res, next) => {
 
 exports.userCryptocurrency = (req, res, next) => {
     userCryptocurrency(req.headers)
-        .then(userCryptocurrency => res.status(201).send(userCryptocurrency))
+        .then(userCryptocurrency => res.send(userCryptocurrency))
         .catch(next);
 };
