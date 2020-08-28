@@ -13,7 +13,7 @@ exports.validateUser = async (req, res, next) => {
 
     if (!userName || !password) {
         return res.status(422).json({ errors: 'No se enviaron todos los parametros necesarios (userName-password)' });
-      }
+    }
 
     if (!user) {
         return res.status(404).json({ errors: `No se encontró el userName '${userName}' registrado en nuestro sistema` });
