@@ -13,18 +13,21 @@ Crear el archivo .env y agregar las siguientes variables
 ```sh
 SECRET_KEY=keyToken
 ENDPOINT_COIN_MARKETS=https://api.coingecko.com/api/v3/coins/markets
+DB_HOST=
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
 ```
 
 ### Base de datos
 
 Se deben realizar lo siguientes pasos:
  - Crear base de datos
- - Configurar variables en archivo config/bd.js
- "username": "root",
-    "password": null,
-    "database": "db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+ - Configurar variables db en archivo env:
+    DB_USERNAME=root
+    DB_PASSWORD=
+    DB_NAME=wolox
+    DB_HOST=127.0.0.1
  
 ### Migraciones
 
