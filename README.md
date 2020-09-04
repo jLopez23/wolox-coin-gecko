@@ -21,6 +21,7 @@ DB_NAME=
 
 ### Base de datos
 
+```sh
 Se deben realizar lo siguientes pasos:
  - Crear base de datos
  - Configurar variables db en archivo env:
@@ -28,6 +29,7 @@ Se deben realizar lo siguientes pasos:
     DB_PASSWORD=
     DB_NAME=wolox
     DB_HOST=127.0.0.1
+```
  
 ### Migraciones
 
@@ -43,9 +45,11 @@ Para iniciar la aplicación se debe correr el siguiente comando:
 $ npm run start
 ```
 ### Testing
+```sh
 Para realizar las pruebas se debe configurar las siguientes variables del archivo config/index.js
  - test/user = Datos de un usuario registrado en bd
  - test/coinId = Id de criptomoneda existente en coingecko
+ ```
 
 Despues de configurar estas variables se debe correr el siguiente comando:
 ```sh
